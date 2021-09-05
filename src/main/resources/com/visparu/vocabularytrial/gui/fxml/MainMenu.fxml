@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<MenuBar>
+			<menus>
+				<Menu mnemonicParsing="false" text="%gui.mainmenu.menubar.file">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#file_new" text="%gui.mainmenu.menubar.file.new" />
+						<MenuItem mnemonicParsing="false" onAction="#file_open" text="%gui.mainmenu.menubar.file.open" />
+						<MenuItem mnemonicParsing="false" onAction="#file_saveas" text="%gui.mainmenu.menubar.file.saveas" />
+						<MenuItem mnemonicParsing="false" onAction="#file_saveselectionas" text="%gui.mainmenu.menubar.file.saveselection" />
+                  		<MenuItem mnemonicParsing="false" onAction="#file_settings" text="%gui.mainmenu.menubar.file.settings" />
+						<MenuItem mnemonicParsing="false" onAction="#file_close" text="%gui.mainmenu.menubar.file.close" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="%gui.mainmenu.menubar.vocabulary">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#vocab_add" text="%gui.mainmenu.menubar.vocabulary.add" />
+						<MenuItem mnemonicParsing="false" onAction="#vocab_clear" text="%gui.mainmenu.menubar.vocabulary.clear" />
+						<MenuItem mnemonicParsing="false" onAction="#vocab_shuffle" text="%gui.mainmenu.menubar.vocabulary.shuffle" />
+						<MenuItem mnemonicParsing="false" onAction="#vocab_languages" text="%gui.mainmenu.menubar.vocabulary.languages" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="%gui.mainmenu.menubar.trial">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#trial_list" text="%gui.mainmenu.menubar.trial.list" />
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<CheckMenuItem fx:id="cmi_trial_randomize" mnemonicParsing="false" text="%gui.mainmenu.menubar.trial.randomize" />
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem mnemonicParsing="false" onAction="#trial_all" text="%gui.mainmenu.menubar.trial.all" />
+						<MenuItem mnemonicParsing="false" onAction="#trial_selected" text="%gui.mainmenu.menubar.trial.selected" />
+						<MenuItem mnemonicParsing="false" onAction="#trial_failed" text="%gui.mainmenu.menubar.trial.failed" />
+						<MenuItem mnemonicParsing="false" onAction="#trial_custom" text="%gui.mainmenu.menubar.trial.custom" />
+						<MenuItem mnemonicParsing="false" onAction="#trial_reset" text="%gui.mainmenu.menubar.trial.reset" />
+					</items>
+				</Menu>
+				<Menu fx:id="mn_languages" mnemonicParsing="false" text="%gui.mainmenu.menubar.languages">
+					<items>
+						<CheckMenuItem mnemonicParsing="false" onAction="#change_language" text="%gui.mainmenu.menubar.languages.english" />
+						<CheckMenuItem mnemonicParsing="false" onAction="#change_language" text="%gui.mainmenu.menubar.languages.german" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="%gui.mainmenu.menubar.debug">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#debug_openlog" text="%gui.mainmenu.menubar.debug.log" />
+						<MenuItem mnemonicParsing="false" onAction="#debug_fillrandomly" text="%gui.mainmenu.menubar.debug.fill" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="%gui.mainmenu.menubar.help">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#help_about" text="%gui.mainmenu.menubar.help.about" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<GridPane VBox.vgrow="NEVER">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<HBox alignment="CENTER_LEFT" spacing="10.0">
+					<children>
+						<Label text="%gui.mainmenu.language_from" />
+						<ChoiceBox fx:id="cb_language_from" prefWidth="150.0" />
+					</children>
+					<GridPane.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</GridPane.margin>
+				</HBox>
+				<HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1">
+					<children>
+						<Label text="%gui.mainmenu.language_to" />
+						<ChoiceBox fx:id="cb_language_to" prefWidth="150.0" />
+					</children>
+					<GridPane.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</GridPane.margin>
+				</HBox>
+			</children>
+		</GridPane>
+		<TableView fx:id="tv_vocabulary" VBox.vgrow="ALWAYS">
+			<columns>
+				<TableColumn fx:id="tc_word" editable="false" prefWidth="75.0" text="%gui.mainmenu.table.column.word" />
+				<TableColumn fx:id="tc_translations" editable="false" prefWidth="75.0" sortable="false" text="%gui.mainmenu.table.column.translations" />
+			</columns>
+			<columnResizePolicy>
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			</columnResizePolicy>
+		</TableView>
+		<HBox fx:id="hb_status_bar" alignment="CENTER_LEFT" prefHeight="20.0">
+			<children>
+				<HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+					<children>
+						<Label fx:id="lb_status" text="{lb_status}" />
+					</children>
+				</HBox>
+				<Separator orientation="VERTICAL" prefHeight="200.0" />
+				<HBox alignment="CENTER" HBox.hgrow="NEVER">
+					<children>
+						<ImageView fx:id="iv_status_icon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER" />
+					</children>
+				</HBox>
+			</children>
+			<padding>
+				<Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+			</padding>
+		</HBox>
+	</children>
+</VBox>
