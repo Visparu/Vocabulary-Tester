@@ -8,9 +8,9 @@
 		<version>2.5.4</version>
 	</parent>
 	<groupId>com.visparu</groupId>
-	<artifactId>vocabularytrialmaven</artifactId>
+	<artifactId>vocabulary-trial</artifactId>
 	<version>1.0.0</version>
-	<name>vocabulary-trial-maven</name>
+	<name>vocabulary-trial</name>
 	<description>Vocabulary tester application</description>
 
 	<properties>
