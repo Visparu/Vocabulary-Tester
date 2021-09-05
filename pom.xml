@@ -9,21 +9,13 @@
 	</parent>
 	<groupId>com.visparu</groupId>
 	<artifactId>vocabularytrialmaven</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>vocabulary-trial-maven</name>
 	<description>Vocabulary tester application</description>
 
 	<properties>
 		<java.version>16</java.version>
-		<javafx-version>15</javafx-version>
-
-		<spring.version>5.3.9</spring.version>
-		<spring.boot.version>2.5.4</spring.boot.version>
-
-		<sqlite-jdbc.version>3.36.0.3</sqlite-jdbc.version>
-
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<spring-boot-maven-plugin.version></spring-boot-maven-plugin.version>
+		<javafx.version>15</javafx.version>
 		<javafx-maven-plugin.version>0.0.6</javafx-maven-plugin.version>
 
 		<mainClass>com.visparu.vocabularytrial.root.Main</mainClass>
@@ -33,39 +25,34 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot</artifactId>
-			<version>${spring.boot.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>${spring.boot.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
-			<version>${javafx-version}</version>
+			<version>${javafx.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
-			<version>${javafx-version}</version>
+			<version>${javafx.version}</version>
 		</dependency>
 
 		<dependency>
@@ -77,7 +64,6 @@
 		<dependency>
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
-			<version>${sqlite-jdbc.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -86,7 +72,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -96,7 +81,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring.boot.version}</version>
 			</plugin>
 
 			<plugin>
