@@ -11,7 +11,7 @@
 	
 	<groupId>com.visparu</groupId>
 	<artifactId>vocabulary-trial</artifactId>
-	<version>1.0.1</version>
+	<version>1.2.0</version>
 	
 	<name>vocabulary-trial</name>
 	<description>Vocabulary tester application</description>
