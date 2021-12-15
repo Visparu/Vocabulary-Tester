@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.TrialComponent;
 import de.visparu.vocabularytrial.model.db.VPS;
 import de.visparu.vocabularytrial.util.ConvertUtil;
@@ -111,7 +112,7 @@ public final class Trial
 			}
 			return null;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;
@@ -156,7 +157,7 @@ public final class Trial
 			}
 			return trials;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -203,7 +204,7 @@ public final class Trial
 			}
 			return wordchecks;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();

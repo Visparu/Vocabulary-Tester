@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.LogComponent;
 import de.visparu.vocabularytrial.model.db.VPS;
 import de.visparu.vocabularytrial.model.log.Severity;
@@ -79,7 +80,7 @@ public final class LogItem
 			LogItem.session_log_id	= next_log_id;
 			LogItem.initialized		= true;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 		}
@@ -247,7 +248,7 @@ public final class LogItem
 				return null;
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;
@@ -395,7 +396,7 @@ public final class LogItem
 			}
 			return log_ids;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -417,7 +418,7 @@ public final class LogItem
 			}
 			return logitems;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -501,7 +502,7 @@ public final class LogItem
 			}
 			return logitems;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();

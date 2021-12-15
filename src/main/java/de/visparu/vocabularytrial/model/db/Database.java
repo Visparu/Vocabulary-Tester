@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.sqlite.JDBC;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.model.db.entities.Language;
 import de.visparu.vocabularytrial.model.db.entities.LogItem;
 import de.visparu.vocabularytrial.model.db.entities.Translation;
@@ -45,7 +46,7 @@ public final class Database
 		}
 	}
 	
-	private Database(final String driver, final String protocol, final String filename)
+	private Database(final String driver, final String protocol, final String filename) throws DatabaseInstantiationException
 	{
 		this.driver		= driver;
 		this.protocol	= protocol;
@@ -56,11 +57,11 @@ public final class Database
 		}
 		catch (SQLException e)
 		{
-			e.printStackTrace();
+			throw new DatabaseInstantiationException(e);
 		}
 	}
 	
-	public static final Database get()
+	public static final Database get() throws DatabaseInstantiationException
 	{
 		if (Database.instance == null)
 		{
@@ -71,7 +72,7 @@ public final class Database
 		return instance;
 	}
 	
-	private static final Database get(final String driver, final String protocol, final String filename)
+	private static final Database get(final String driver, final String protocol, final String filename) throws DatabaseInstantiationException
 	{
 		Database.instance = new Database(driver, protocol, filename);
 		Translation.clearCache();
@@ -93,7 +94,7 @@ public final class Database
 		}
 	}
 	
-	public final void changeDatabase(final String driver, final String protocol, final String filename)
+	public final void changeDatabase(final String driver, final String protocol, final String filename) throws DatabaseInstantiationException
 	{
 		Database.get(driver, protocol, filename);
 		LogItem.createTable();

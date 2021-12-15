@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.TrialComponent;
 import de.visparu.vocabularytrial.model.db.VPS;
 import de.visparu.vocabularytrial.util.ConvertUtil;
@@ -106,7 +107,7 @@ public final class WordCheck
 			if (rs.next())
 			{
 				final String	answerString	= rs.getString("answerString");
-				final Boolean	correct			= rs.getInt("correct") == 0 ? false : true;
+				final Boolean	correct			= rs.getInt("correct") != 0;
 				final WordCheck	c				= new WordCheck(Word.get(word_id), Trial.get(trial_id), answerString, correct);
 				
 				WordCheck.cache.put(WordCheck.createKeyHash(word_id, trial_id), c);
@@ -115,7 +116,7 @@ public final class WordCheck
 			}
 			return null;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;
@@ -134,7 +135,7 @@ public final class WordCheck
 		final Integer	word_id			= word.getWord_id();
 		final Integer	trial_id		= trial.getTrial_id();
 		final String	answerString	= check.getAnswerString();
-		final Integer	correct_i		= correct ? 1 : 0;
+		final Integer	correct_i		= correct.booleanValue() ? 1 : 0;
 		
 		VPS.execute(query, word_id, trial_id, answerString, correct_i);
 		
