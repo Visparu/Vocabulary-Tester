@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.LanguageComponent;
 import de.visparu.vocabularytrial.model.db.Queries;
 import de.visparu.vocabularytrial.model.db.VPS;
@@ -122,7 +123,7 @@ public final class Language
 				return null;
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;
@@ -191,7 +192,7 @@ public final class Language
 			}
 			return words;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();

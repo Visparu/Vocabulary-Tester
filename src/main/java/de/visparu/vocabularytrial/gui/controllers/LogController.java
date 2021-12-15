@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.LogComponent;
 import de.visparu.vocabularytrial.gui.interfaces.VokAbfController;
 import de.visparu.vocabularytrial.model.db.VPS;
@@ -164,7 +165,7 @@ public final class LogController implements Initializable, VokAbfController, Log
 				this.cb_thread.getItems().add(rs.getString("threadname"));
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 		}
@@ -222,7 +223,7 @@ public final class LogController implements Initializable, VokAbfController, Log
 				this.cb_function.getItems().add(rs.getString("function"));
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 		}

@@ -6,12 +6,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
+
 public class VPS implements AutoCloseable
 {
 	
 	private final PreparedStatement pstmt;
 	
-	public VPS(String query) throws SQLException
+	public VPS(String query) throws SQLException, DatabaseInstantiationException
 	{
 		this.pstmt = Database.get().prepareStatement(query);
 	}
@@ -22,7 +24,7 @@ public class VPS implements AutoCloseable
 		{
 			return vps.execute(params);
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -44,7 +46,7 @@ public class VPS implements AutoCloseable
 			}
 			return generatedKeys;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -57,7 +59,7 @@ public class VPS implements AutoCloseable
 		{
 			return Database.get().executeQuery(this.pstmt, params);
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;

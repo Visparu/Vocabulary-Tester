@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.model.db.VPS;
 
 public final class Translation
@@ -124,7 +125,7 @@ public final class Translation
 			}
 			return null;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;

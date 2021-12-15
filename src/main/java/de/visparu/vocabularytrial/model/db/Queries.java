@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.model.db.entities.Language;
 
 public final class Queries
@@ -33,7 +34,7 @@ public final class Queries
 			}
 			return languages;
 		}
-		catch (SQLException e)
+		catch (SQLException | DatabaseInstantiationException e)
 		{
 			e.printStackTrace();
 			return null;

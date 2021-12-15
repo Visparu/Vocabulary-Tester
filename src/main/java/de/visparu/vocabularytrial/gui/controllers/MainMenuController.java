@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import de.visparu.vocabularytrial.debug.Debug;
+import de.visparu.vocabularytrial.exceptions.DatabaseInstantiationException;
 import de.visparu.vocabularytrial.gui.interfaces.LanguageComponent;
 import de.visparu.vocabularytrial.gui.interfaces.TrialComponent;
 import de.visparu.vocabularytrial.gui.interfaces.VokAbfController;
@@ -217,7 +218,15 @@ public final class MainMenuController implements Initializable, LanguageComponen
 				return;
 			}
 			C11N.setDatabasePath(selectedFile.getAbsolutePath());
-			Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			try
+			{
+				Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			}
+			catch (DatabaseInstantiationException e)
+			{
+				e.printStackTrace();
+				return;
+			}
 			VokAbfController.repopulateAll();
 			LogItem.info("New database file created", "New database file created under " + selectedFile.getAbsolutePath());
 		}
@@ -237,7 +246,15 @@ public final class MainMenuController implements Initializable, LanguageComponen
 		if (selectedFile != null)
 		{
 			C11N.setDatabasePath(selectedFile.getAbsolutePath());
-			Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			try
+			{
+				Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			}
+			catch (DatabaseInstantiationException e)
+			{
+				e.printStackTrace();
+				return;
+			}
 			VokAbfController.repopulateAll();
 			LogItem.info("Switched to existing database", "Switched to existing database under " + selectedFile.getAbsolutePath());
 		}
@@ -261,8 +278,16 @@ public final class MainMenuController implements Initializable, LanguageComponen
 				return;
 			}
 			C11N.setDatabasePath(selectedFile.getAbsolutePath());
-			Database.get().copyDatabase(selectedFile);
-			Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			try
+			{
+				Database.get().copyDatabase(selectedFile);
+				Database.get().changeDatabase(C11N.getDriver(), C11N.getProtocol(), C11N.getDatabasePath().getAbsolutePath());
+			}
+			catch (DatabaseInstantiationException e)
+			{
+				e.printStackTrace();
+				return;
+			}
 			VokAbfController.repopulateAll();
 			LogItem.info("Saved database to new file", "Saved database to " + selectedFile.getAbsolutePath());
 		}
@@ -303,7 +328,15 @@ public final class MainMenuController implements Initializable, LanguageComponen
 					return;
 				}
 			}
-			Database.get().createNewDatabase(selectedFile.getAbsolutePath(), this.tv_vocabulary.getSelectionModel().getSelectedItems());
+			try
+			{
+				Database.get().createNewDatabase(selectedFile.getAbsolutePath(), this.tv_vocabulary.getSelectionModel().getSelectedItems());
+			}
+			catch (DatabaseInstantiationException e)
+			{
+				e.printStackTrace();
+				return;
+			}
 		}
 	}
 	
