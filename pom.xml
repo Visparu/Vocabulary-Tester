@@ -2,23 +2,60 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.4</version>
 	</parent>
+	
 	<groupId>com.visparu</groupId>
 	<artifactId>vocabulary-trial</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
+	
 	<name>vocabulary-trial</name>
 	<description>Vocabulary tester application</description>
-
+	<inceptionYear>2018</inceptionYear>
+	
+	<contributors>
+		<contributor>
+			<name>Visparu</name>
+			<email>visparu@outlook.com</email>
+			<roles>
+				<role>Implementation Lead</role>
+			</roles>
+			<timezone>CET/CEST</timezone>
+		</contributor>
+	</contributors>
+	<developers>
+		<developer>
+			<name>Visparu</name>
+			<email>visparu@outlook.com</email>
+			<roles>
+				<role>Implementation Lead</role>
+			</roles>
+			<timezone>CET/CEST</timezone>
+		</developer>
+	</developers>
+	
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/Visparu/VocabularyTrial/issues</url>
+	</issueManagement>
+	
+	<licenses>
+		<license>
+			<name>Apache-2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
+	
 	<properties>
 		<java.version>16</java.version>
-		<javafx.version>15</javafx.version>
-		<javafx-maven-plugin.version>0.0.6</javafx-maven-plugin.version>
+		<javafx.version>16</javafx.version>
 
-		<mainClass>com.visparu.vocabularytrial.root.Main</mainClass>
+		<mainClass>de.visparu.vocabularytrial.root.VocabularyTrialSpringApplication</mainClass>
 	</properties>
 
 	<dependencies>
@@ -70,26 +107,19 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.openjfx</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-				<version>${javafx-maven-plugin.version}</version>
 				<configuration>
 					<mainClass>${mainClass}</mainClass>
+					<layout>ZIP</layout>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
